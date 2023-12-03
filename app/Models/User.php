@@ -24,6 +24,8 @@ class User extends Authenticatable
         'phone_number'
     ];
 
+    protected $hashed=['password'];
+
     /**
      * The attributes that should be hidden for serialization.
      *

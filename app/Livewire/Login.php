@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -27,7 +29,27 @@ class Login extends Component
     public function loginForm(Request $request)
     {
         $this->validate();
-        dd($request);
+        if(Auth::guard('web')->attempt(['email'=>$this->email, 'password'=>$this->password]))
+        {
+            return redirect()->route('user.dashboard');
+        }else{
+            if(User::where('email',$this->email)->exists())
+            {
+                $this->dispatch('checkPassword',message: 'Password is Incorrect',parameter:'Password');
+                return true;
+            }else{
+                $this->dispatch('checkPassword',message: 'Email is Incorrect',parameter:'Email');
+                return true;
+            }
+        }
+    }
+
+    public function mount()
+    {
+        if(Auth::check())
+        {
+            return redirect()->route('user.dashboard');
+        }
     }
 
     public function render()

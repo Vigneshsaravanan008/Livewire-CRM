@@ -1,7 +1,10 @@
 <?php
 
+use App\Livewire\Dashboard;
+use App\Livewire\ForgetPassword;
 use App\Livewire\Login;
 use App\Livewire\Register;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,5 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',Login::class)->name('auth.login');
-Route::get('/register',Register::class)->name('auth.register');
+Route::get('/', Login::class)->name('auth.login');
+Route::get('/register', Register::class)->name('auth.register');
+Route::get('/forget-password', ForgetPassword::class)->name('auth.forget-password');
+
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', Dashboard::class)->name('user.dashboard');
+});

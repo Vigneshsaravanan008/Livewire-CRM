@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -31,7 +33,14 @@ class Register extends Component
     public function registerForm(Request $request)
     {
         $this->validate();
-        dd(request());
+        User::create([
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'password'=>$this->password
+        ]);
+        $user=User::where('email',$this->email)->first();
+        Auth::login($user);
+        return redirect()->route('user.dashboard');
     }
 
     public function render()
