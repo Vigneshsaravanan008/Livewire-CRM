@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Customer;
 use App\Livewire\Dashboard;
 use App\Livewire\ForgetPassword;
 use App\Livewire\Login;
@@ -24,4 +25,6 @@ Route::get('/forget-password', ForgetPassword::class)->name('auth.forget-passwor
 
 Route::middleware('auth')->group(function(){
     Route::get('/dashboard', Dashboard::class)->name('user.dashboard');
+
+    Route::get('/customer',Customer::class)->name('user.customer');
 });
