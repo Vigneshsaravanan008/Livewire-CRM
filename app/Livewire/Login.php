@@ -26,7 +26,7 @@ class Login extends Component
         $this->validateOnly($value);
     }
 
-    public function loginForm(Request $request)
+    public function loginForm()
     {
         $this->validate();
         if(Auth::guard('web')->attempt(['email'=>$this->email, 'password'=>$this->password]))

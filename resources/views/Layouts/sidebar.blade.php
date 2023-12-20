@@ -10,7 +10,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{route('user.dashboard')}}" class="nav-link active">
+                    <a href="{{route('user.dashboard')}}" class="nav-link {{request()->routeIs('user.dashboard')?"active":""}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('user.customer')}}" class="nav-link">
+                    <a href="{{route('user.customer')}}" class="nav-link {{request()->routeIs('user.customer')?"active":""}}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Customers
