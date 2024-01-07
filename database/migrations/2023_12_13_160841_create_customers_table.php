@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('logo');
+            $table->string('image');
             $table->string('company_url')->nullable();
             $table->string('gst_no')->nullable();
-            $table->string('phone_number')->nullable();
+            $table->string('phone_no')->nullable();
             $table->string('address')->nullable();
             $table->integer('status')->comment('1:active:0:inactive')->default(1);
             $table->integer('country_id')->references('id')->on('countries')->onDelete('cascade');
-            $table->integer('state')->references('id')->on('states')->onDelete('cascade');
+            $table->integer('state_id')->references('id')->on('states')->onDelete('cascade');
             $table->string('city');
             $table->timestamps();
             $table->softDeletes();

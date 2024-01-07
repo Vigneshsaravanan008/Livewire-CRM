@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css')}}">
     @livewireStyles
 </head>
 
@@ -51,6 +52,8 @@
     <script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
     <script src="{{ asset('assets/dist/js/pages/dashboard2.js') }}"></script>
+    <script src="{{ asset('assets/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
     @stack('script')
 </body>
