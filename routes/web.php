@@ -4,6 +4,7 @@ use App\Livewire\Customer;
 use App\Livewire\Dashboard;
 use App\Livewire\ForgetPassword;
 use App\Livewire\Login;
+use App\Livewire\Project;
 use App\Livewire\Register;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/dashboard', Dashboard::class)->name('user.dashboard');
 
     Route::get('/customer',Customer::class)->name('user.customer');
+    Route::get('/project',Project::class)->name('user.project');
 });

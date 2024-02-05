@@ -26,6 +26,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('user.project')}}" class="nav-link {{request()->routeIs('user.project')?"active":""}}">
+                        <i class="nav-icon fas fa-tasks"></i>
+                        <p>
+                            Projects
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>

@@ -9,12 +9,20 @@ use App\Traits\ImageTrait;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\WithPagination;
 
 class Customer extends Component
 {
     public $states,$id,$countries,$name,$email,$customer_name,$phone_no,$company_url,$country_id,$gst_no,$state_id,$city,$address,$image,$url="",$title="Add Customer";
     
     use WithFileUploads,ImageTrait;
+    use WithPagination;
+
+    public $customerName="";
+    public $customerEmail="";
+    public $customerPhoneNo="";
+
+    protected $paginationTheme = 'bootstrap';
     protected $listeners=[
         'callState'
     ];
@@ -35,8 +43,14 @@ class Customer extends Component
 
     public function render()
     {
-        $customers=ModelCustomer::paginate(15);
-        return view('livewire.customer',compact('customers'))->extends('Layouts.master')->section('content');
+        if($this->customerName!=null || $this->customerEmail!=null || $this->customerPhoneNo!=null)
+        {
+            $customers=ModelCustomer::where('customer_name',"LIKE","%".$this->customerName."%")->where('email',"LIKE","%".$this->customerEmail."%")->where('phone_no',"LIKE","%".$this->customerPhoneNo."%")->paginate(15);
+            return view('livewire.customer',compact('customers'))->extends('Layouts.master')->section('content');
+        }else{
+            $customers=ModelCustomer::paginate(15);
+            return view('livewire.customer',compact('customers'))->extends('Layouts.master')->section('content');
+        }
     }
 
     public function mount()
